@@ -129,7 +129,10 @@ if uploaded_file:
 
         st.subheader("Dataset Preview")
 
-        st.dataframe(df.head())
+        st.dataframe(
+            df.head(),
+            width="stretch"
+        )
 
         # ---------------------------------------------
         # Remove target column if exists
@@ -277,7 +280,7 @@ if uploaded_file:
 
         st.dataframe(
             results,
-            use_container_width=True
+            width="stretch"
         )
 
         # ---------------------------------------------
@@ -292,7 +295,7 @@ if uploaded_file:
 
             st.dataframe(
                 high_risk,
-                use_container_width=True
+                width="stretch"
             )
 
         else:
@@ -317,7 +320,7 @@ if uploaded_file:
 
         st.plotly_chart(
             fig1,
-            use_container_width=True
+            width="stretch"
         )
 
         # ---------------------------------------------
@@ -347,7 +350,7 @@ if uploaded_file:
 
         st.plotly_chart(
             fig2,
-            use_container_width=True
+            width="stretch"
         )
 
         # ---------------------------------------------
@@ -374,23 +377,10 @@ if uploaded_file:
 
         st.plotly_chart(
             fig3,
-            use_container_width=True
+            width="stretch"
         )
 
-        # ---------------------------------------------
-        # Download Results
-        # ---------------------------------------------
-
-        csv = results.to_csv(
-            index=False
-        ).encode("utf-8")
-
-        st.download_button(
-            label="⬇ Download Prediction Results",
-            data=csv,
-            file_name="fraud_predictions.csv",
-            mime="text/csv"
-        )
+        
 
     except Exception as e:
 
